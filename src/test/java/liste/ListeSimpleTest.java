@@ -127,6 +127,22 @@ public class ListeSimpleTest {
         assertEquals("ListeSimple(Noeud(4), Noeud(3), Noeud(2))", listeATester.toString());
         assertEquals(3, listeATester.getSize());
     }
+    @Test
+    void supprimePremierElementAbsent() {
+        listeATester.ajout(1);
+        listeATester.ajout(2);
+        listeATester.supprimePremier(99); // Élément inexistant
+        assertEquals("ListeSimple(Noeud(2), Noeud(1))", listeATester.toString());
+        assertEquals(2, listeATester.getSize());
+    }
+
+    @Test
+    void supprimePremierUniqueElement() {
+        listeATester.ajout(1);
+        listeATester.supprimePremier(1);
+        assertNull(listeATester.tete);
+        assertEquals(0, listeATester.getSize());
+    }
 
     @Test
     void supprimeTousListeVide() {
